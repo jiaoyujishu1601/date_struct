@@ -7,6 +7,7 @@ int sert(Node **root_pointer,int new_value){
 	Node *current;
 	Node *new_node;
 	//这里current指向当前节点，root_pointer指向前一节点的next字段的指针
+	//寻找插入点
 	while ((current = *root_pointer) != NULL&&current->data<new_value){
 		root_pointer = &current->next;
 	}
@@ -16,6 +17,28 @@ int sert(Node **root_pointer,int new_value){
 	*root_pointer  = new_node;
 	return 1;
 }
+//------这里有个易懂方法---------------------------------
+/*******************************************************
+int insert(Node *rootp,int new_value){
+	Node *prevent;//前一节点
+	Node *current;//当前节点
+	Node *new_node;//新节点
+	prevent=current=rootp;
+	while(current!=NULL&&current->value<new_value){
+		prevent=current;
+		current=current->next;
+	}
+	//      分配内存
+	new_node=(Node *)malloc(sizeof(Node));
+	if(new_Node==NULL)
+		exit(-1);
+	//      插 入
+	new_node->value=new_value;
+	prevent->next=new_node;
+	new_node->next=current;
+	return TRUE;
+}
+********************************************************/
 Node *search(Node *root, int value){
 	Node *search_in;
 	search_in = root;

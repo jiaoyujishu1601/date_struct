@@ -2,9 +2,11 @@
 //单节点插入
 //witer :wjr;
 //time  :2017/5/6;
+//   root_pointer 为指向根节点的指针（方便修改根节点，当链表为空时这点很重要），new_value为新插入值
 int sert(Node **root_pointer,int new_value){
 	Node *current;
 	Node *new_node;
+	//这里current指向当前节点，root_pointer指向前一节点的next字段的指针
 	while ((current = *root_pointer) != NULL&&current->data<new_value){
 		root_pointer = &current->next;
 	}
